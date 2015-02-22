@@ -1,16 +1,9 @@
 ## The functions below are called makeCacheMatrix and cacheSolve.
 ## The first function, makeCacheMatrix(), will be used to make cache available. In this case to cache a calculated inverse matrix.
 ## The second function, cacheSolve(), is used to calculate the inverse matrix which is set in the makeCacheMatrix() function.
+## To test the functions check test steps at bottom of this file.
 
 
-## testing
-X <- makeCacheMatrix()
-X$set(matrix(1:4, 2, 2)) ## set matrix
-X$get() ## returns matrix 1:9, 3, 3
-X$getinverse() ## returns null as no inverse is calculated yet
-cacheSolve(X) ## returns inverse matrix
-X$getinverse() ## returns inverse matrix as this is now cached
-cacheSolve(X) ## returns "getting cached data" and inverse matrix (cached)
 
 ## This function creates a special "matrix" object that can cache its inverse.
 
@@ -68,3 +61,13 @@ cacheSolve <- function(x, ...) {
 		## return inverse value
 		i
 }
+
+
+## test steps
+X <- makeCacheMatrix()
+X$set(matrix(1:4, 2, 2)) ## set matrix
+X$get() ## returns matrix 1:9, 3, 3
+X$getinverse() ## returns null as no inverse is calculated yet
+cacheSolve(X) ## returns inverse matrix
+X$getinverse() ## returns inverse matrix as this is now cached
+cacheSolve(X) ## returns "getting cached data" and inverse matrix (cached)
